@@ -15,12 +15,12 @@ describe "Static Pages" do
     
     it "should have the right title" do
       visit root_path
-      expect(page).to have_title("grow up yoursefl | Home")
+      expect(page).to have_title('Grow up yourself | Home')
     end
   
   end
   
-describe "Help page" do
+  describe "Help page" do
 
     it "should have the content 'Help'" do
       visit '/static_pages/help'
@@ -36,6 +36,11 @@ describe "Help page" do
     end
   end
   
-  
+  describe "Contact page" do
+    it "should have content 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_content("Contact")
+    end
+  end  
 
 end

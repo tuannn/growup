@@ -29,6 +29,10 @@ gem 'spring'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'  
 gem 'rspec-rails', '2.13.1'
+gem 'guard-rspec', '2.5.0'
+gem 'spork-rails', '4.0.0'
+gem 'guard-spork', '1.5.0'
+gem 'childprocess'
 
 end
 
