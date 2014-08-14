@@ -1,0 +1,27 @@
+<h1>My languages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @languages.each do |language| %>
+      <tr>
+        <td><%= language.name %></td>
+        <td><%= language.note %></td>
+        <td><%= link_to 'Show', user_language_path(@user, language) %></td>
+        <td><%= link_to 'Edit', edit_user_language_path(@user, language) %></td>
+        <td><%= link_to 'Destroy', user_language_path(@user, language), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Language', new_user_language_path(@user) %>

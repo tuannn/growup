@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Word:</strong>
+  <%= @dictionary.word %>
+</p>
+
+<p>
+  <strong>Pronunciation:</strong>
+  <%= @dictionary.pronunciation %>
+</p>
+
+<p>
+  <strong>Example:</strong>
+  <%= @dictionary.example %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @language.name %>
+</p>
+
+<%= link_to 'Edit', edit_user_language_dictionary_path(@user, @language, @dictionary) %> |
+<%= link_to 'Back', user_language_dictionaries_path(@user, @language) %>

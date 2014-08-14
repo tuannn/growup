@@ -81,7 +81,12 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
-
+  
+  #Languages
+  def languages
+    @languages = Language.all  
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

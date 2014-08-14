@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :tags
+
   root 'static_pages#home'
 
   #get 'static_pages/help'
@@ -19,6 +22,9 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+    end
+    resources :languages do
+      resources :dictionaries
     end
   end
   resources :sessions, only: [:new, :create, :destroy]

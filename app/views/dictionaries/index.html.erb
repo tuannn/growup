@@ -1,0 +1,30 @@
+<h1>Your <%= @language.name %> Dictionary</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Pronunciation</th>
+      <th>Example</th>
+      <th>Language</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dictionaries.each do |dictionary| %>
+      <tr>
+        <td><%= dictionary.word %></td>
+        <td><%= dictionary.pronunciation %></td>
+        <td><%= dictionary.example %></td>
+        <td><%= link_to 'Show', user_language_dictionary_path(@user, @language, dictionary) %></td>
+        <td><%= link_to 'Edit', edit_user_language_dictionary_path(@user, @language, dictionary) %></td>
+        <td><%= link_to 'Destroy', user_language_dictionary_path(@user, @language, dictionary), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Word', new_user_language_dictionary_path(@user, @language) %>

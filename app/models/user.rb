@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :languages, foreign_key: "user_id", dependent: :destroy
   
   validates :name, presence: true, length: {maximum: 50}
                    
