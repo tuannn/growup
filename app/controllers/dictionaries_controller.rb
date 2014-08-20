@@ -33,7 +33,7 @@ class DictionariesController < ApplicationController
 
     respond_to do |format|
       if @dictionary.save
-         @dictionary.word_tag_relation_ships.create(params[:dictionaris][:tag_id])
+         #@dictionary.word_tag_relation_ships.create(params[:dictionaris][:tag_id])
           format.html { redirect_to user_language_dictionary_path(@user, @language, @dictionary), notice: 'Dictionary was successfully created.' }
           format.json { render :show, status: :created, location: @dictionary }
       else
