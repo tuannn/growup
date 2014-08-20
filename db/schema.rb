@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812095706) do
+ActiveRecord::Schema.define(version: 20140820065035) do
 
   create_table "dictionaries", force: true do |t|
     t.string   "word"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140812095706) do
     t.integer  "language_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "meaning"
   end
 
   create_table "languages", force: true do |t|
@@ -69,5 +70,12 @@ ActiveRecord::Schema.define(version: 20140812095706) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "word_tag_relation_ships", force: true do |t|
+    t.integer  "dictionary_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

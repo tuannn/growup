@@ -1,10 +1,15 @@
 class DictionariesController < ApplicationController
   before_action :set_dictionary, only: [:show, :edit, :update, :destroy]
   before_action :load_parent
+  before_action :load_tag, only: [:new, :edit, :update]
   # GET /dictionaries
   # GET /dictionaries.json
   def index
-    @dictionaries = @language.dictionaries.all
+    if params[:search] && params[:search].strip != ""
+      @dictionaries = @language.dictionaries.search(params[:search])
+    else
+      @dictionaries = @language.dictionaries.all
+    end
   end
 
   # GET /dictionaries/1
@@ -28,8 +33,9 @@ class DictionariesController < ApplicationController
 
     respond_to do |format|
       if @dictionary.save
-        format.html { redirect_to user_language_dictionary_path(@user, @language, @dictionary), notice: 'Dictionary was successfully created.' }
-        format.json { render :show, status: :created, location: @dictionary }
+         @dictionary.word_tag_relation_ships.create(params[:dictionaris][:tag_id])
+          format.html { redirect_to user_language_dictionary_path(@user, @language, @dictionary), notice: 'Dictionary was successfully created.' }
+          format.json { render :show, status: :created, location: @dictionary }
       else
         format.html { render :new }
         format.json { render json: @dictionary.errors, status: :unprocessable_entity }
@@ -60,6 +66,10 @@ class DictionariesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def search
+    @grants = Grant.search params[:search]
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,11 +79,15 @@ class DictionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dictionary_params
-      params.require(:dictionary).permit(:word, :pronunciation, :example)
+      params.require(:dictionary).permit(:word, :pronunciation, :example, :meaning)
     end
     
     def load_parent
       @user = User.find(params[:user_id])
       @language = @user.languages.find(params[:language_id])
+    end
+    
+    def load_tag
+      @tags = Tag.all
     end
 end

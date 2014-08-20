@@ -24,7 +24,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
     resources :languages do
-      resources :dictionaries
+      resources :dictionaries do
+        
+      end
     end
   end
   resources :sessions, only: [:new, :create, :destroy]

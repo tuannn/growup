@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Language:</strong>
-  <%= @language.name %>
+  <strong>Tag</strong>
+  <%= @dictionary.word_tag_relation_ships.first.tag.name unless @dictionary.word_tag_relation_ships.first.nil? %>
 </p>
 
 <%= link_to 'Edit', edit_user_language_dictionary_path(@user, @language, @dictionary) %> |
