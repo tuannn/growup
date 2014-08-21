@@ -1,35 +1,19 @@
-<h1>Your <%= @language.name %> Dictionary</h1>
-<div id="search">
-    <%= render :partial => '/shared/word_search' %>
-  </div>
-<table>
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th>Pronunciation</th>
-      <th>Meaning</th>
-      <th>Example</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1><%= @language.name %></h1>
+<div class="row">
+  <aside class="span3">
+  	<section>
+      <h2>Top 10 newest word</h2>
+  	  <%= render '/shared/highlight'%>	
+  	</section>
+  </aside>
+  <aside class="span9">
+  	<section> 		
+      <%= render :partial => '/shared/word_search' %>
+  	</section> 
+  	<section><%= link_to 'New Word', new_user_language_dictionary_path(@user, @language) %></section>  
+  	<section>
+      <%= render '/shared/random_word' %>
+    </section>
 
-  <tbody>
-    <% @dictionaries.each do |dictionary| %>
-      <tr>
-        <td><%= dictionary.word %></td>
-        <td><%= dictionary.pronunciation %></td>
-        <td><%= dictionary.meaning %></td>
-        <td><%= dictionary.example %></td>
-        <td><%= dictionary.word_tag_relation_ships.first.tag.name unless dictionary.word_tag_relation_ships.first.nil? %></td>
-        <td><%= link_to 'Show', user_language_dictionary_path(@user, @language, dictionary) %></td>
-        <td><%= link_to 'Edit', edit_user_language_dictionary_path(@user, @language, dictionary) %></td>
-        <td><%= link_to 'Destroy', user_language_dictionary_path(@user, @language, dictionary), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Word', new_user_language_dictionary_path(@user, @language) %>
+  </aside>
+</div>

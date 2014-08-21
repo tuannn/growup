@@ -1,0 +1,13 @@
+<% dictionary = @dictionary %>
+<li id="<%= dictionary.id %>">
+    <span class="user">
+      <%= link_to dictionary.word, user_language_dictionary_path(@user, @language, dictionary) %>
+    </span>
+    <span class="timestamp">
+      <%= dictionary.pronunciation %>
+    </span>
+    <span class="content"><%= dictionary.meaning %></span>
+    <span class="content"><%= dictionary.example %></span>
+  
+</li>
+

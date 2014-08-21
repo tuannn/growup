@@ -1,5 +1,5 @@
 class Language < ActiveRecord::Base
-  belongs_to :users
+  belongs_to :user
   has_many :dictionaries, foreign_key: "language_id", dependent: :destroy
   
   #validation

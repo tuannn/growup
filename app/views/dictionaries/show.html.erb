@@ -1,24 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Word:</strong>
-  <%= @dictionary.word %>
-</p>
-
-<p>
-  <strong>Pronunciation:</strong>
-  <%= @dictionary.pronunciation %>
-</p>
-
-<p>
-  <strong>Example:</strong>
-  <%= @dictionary.example %>
-</p>
-
-<p>
-  <strong>Tag</strong>
-  <%= @dictionary.word_tag_relation_ships.first.tag.name unless @dictionary.word_tag_relation_ships.first.nil? %>
-</p>
-
+<%= render 'shared/word_thumb' %>
 <%= link_to 'Edit', edit_user_language_dictionary_path(@user, @language, @dictionary) %> |
 <%= link_to 'Back', user_language_dictionaries_path(@user, @language) %>

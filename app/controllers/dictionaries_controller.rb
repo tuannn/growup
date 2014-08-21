@@ -8,8 +8,9 @@ class DictionariesController < ApplicationController
     if params[:search] && params[:search].strip != ""
       @dictionaries = @language.dictionaries.search(params[:search])
     else
-      @dictionaries = @language.dictionaries.all
+      @dictionaries = @language.dictionaries.order("RANDOM()").first(10)
     end
+    @highlight_items = @language.dictionaries.last(10).reverse
   end
 
   # GET /dictionaries/1

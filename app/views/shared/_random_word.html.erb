@@ -1,0 +1,8 @@
+<% if @dictionaries.any? %>
+  <ol class="microposts">
+  	<% @dictionaries.each do |dictionary| %>
+  	  <% @dictionary = dictionary %>
+      <%= render 'shared/word_thumb' %>
+    <% end %>
+  </ol>
+<% end %>

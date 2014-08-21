@@ -1,0 +1,9 @@
+<li id="<%= highlight_item.id %>">
+    <span class="user">
+      <%= link_to highlight_item.word, user_language_dictionary_path(@user, @language, highlight_item) %>
+    </span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(highlight_item.created_at) %> ago.
+    </span>
+  
+</li>
