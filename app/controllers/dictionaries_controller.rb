@@ -34,6 +34,7 @@ class DictionariesController < ApplicationController
 
     respond_to do |format|
       if @dictionary.save
+        #binding.pry
          #@dictionary.word_tag_relation_ships.create(params[:dictionaris][:tag_id])
           format.html { redirect_to user_language_dictionary_path(@user, @language, @dictionary), notice: 'Dictionary was successfully created.' }
           format.json { render :show, status: :created, location: @dictionary }
@@ -80,7 +81,7 @@ class DictionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dictionary_params
-      params.require(:dictionary).permit(:word, :pronunciation, :example, :meaning)
+      params.require(:dictionary).permit(:word, :pronunciation, :example, :meaning, :word_tag_relation_ships_attributes => :tag_id)
     end
     
     def load_parent

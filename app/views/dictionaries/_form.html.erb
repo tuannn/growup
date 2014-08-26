@@ -28,8 +28,10 @@
     <%= f.text_area :example, placeholder: "input example", rows: 15 %>
   </div>
   <div class="field">
-    <%= f.label :Tags %><br>
-    <%= collection_select(:dictionaries, :tag_id, Tag.all, :id, :name, prompt: true) %>
+  	<%= f.fields_for :word_tag_relation_ships, @dictionary.word_tag_relation_ships.build do |q| %>
+      <%= q.label :Tags %><br>
+      <%= q.collection_select :tag_id, Tag.all, :id, :name %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

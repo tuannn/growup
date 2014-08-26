@@ -43,6 +43,9 @@ gem 'spork-rails', '4.0.0'
 gem 'guard-spork', '1.5.0'
 gem 'childprocess'
 gem 'rails_layout'
+gem "pry-rails"
+gem "pry"
+gem "pry-debugger"
 
 end
 

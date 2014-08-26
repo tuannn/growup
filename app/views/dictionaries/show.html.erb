@@ -1,3 +1,6 @@
 <%= render 'shared/word_thumb' %>
+<% @dictionary.word_tag_relation_ships.each do |dictionary| %>
+<%= link_to dictionary.tag.name , "#" %>
+<% end %>
 <%= link_to 'Edit', edit_user_language_dictionary_path(@user, @language, @dictionary) %> |
 <%= link_to 'Back', user_language_dictionaries_path(@user, @language) %>
